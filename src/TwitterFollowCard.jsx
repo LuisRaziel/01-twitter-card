@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./TwitterFollowCard.css";
 export function TwitterFollowCard({
   userName,
-  name,
+  // name,
   avatar,
   initialIsFollowing,
   formatUserName,
