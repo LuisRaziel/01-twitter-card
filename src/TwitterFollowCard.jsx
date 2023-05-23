@@ -1,13 +1,27 @@
+import { useState } from "react";
 import "./TwitterFollowCard.css";
 export function TwitterFollowCard({
   userName,
   name,
   avatar,
-  isFollowing,
+  initialIsFollowing,
   formatUserName,
+  children,
 }) {
   // las props que se reciben en el componte hijo no se puede modificar, deben ser inmutables
-  // para añaridr nu valor nuevo o complemetarlo se puede usar una constante: const userName = props.userName
+  // para añadir un valor nuevo desde una prop o complemetarlo se puede usar una constante: const userName = props.userName
+
+  const [isFollowing, setIsFollowing] = useState(initialIsFollowing);
+  // se pueden usar props para inicializar estados del componente
+ 
+  const text = isFollowing ? "Siguiendo" : "Seguir";
+  const buttonClassName = isFollowing
+    ? "tw-followButton is-following"
+    : "tw-followButton";
+
+  const handleClick = () => {
+    setIsFollowing(!isFollowing);
+  };
 
   return (
     <article className="tw-followCard">
@@ -18,14 +32,17 @@ export function TwitterFollowCard({
           alt=""
         />
         <div className="tw-followCard-info">
-          <strong> {name} </strong>
+          <strong> {children} </strong>
           <span className="tw-followCard-user">
             {formatUserName(userName)}{" "}
           </span>
         </div>
       </header>
       <aside>
-        <button className="tw-followButton">Seguir </button>
+        <button className={buttonClassName} onClick={handleClick}>
+          <span className="tw-followButton-text">{text}</span>
+          <span className="tw-followButton-stopFollow">Dejar de seguir</span>
+        </button>
       </aside>
     </article>
   );

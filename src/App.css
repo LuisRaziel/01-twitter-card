@@ -1,0 +1,31 @@
+body {
+  margin: 0;
+  font-family: system-ui;
+  display: grid;
+  place-content: center;
+  min-height: 100vh;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  width: 348px;
+  background-color: rgb(247, 249, 249);
+  border-radius: 16px;
+}
+
+.more-results {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  cursor: pointer;
+  color: rgb(61, 135, 238);
+  font-size: 15px;
+}
+
+.more-results:hover {
+  transition: 0.3s ease background-color;
+  background-color: rgb(237, 237, 237);
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+}
